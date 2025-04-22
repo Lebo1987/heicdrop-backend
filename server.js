@@ -28,7 +28,7 @@ app.post('/convert', upload.single('file'), async (req, res) => {
   const outputFilename = path.basename(req.file.originalname, path.extname(req.file.originalname)) + '.jpg'
   const outputPath = path.join('output', outputFilename)
 
-  const command = `magick "${inputPath}" "${outputPath}"`
+  const command = `convert "${inputPath}" "${outputPath}"`;
 
   exec(command, (error, stdout, stderr) => {
     if (error) {
